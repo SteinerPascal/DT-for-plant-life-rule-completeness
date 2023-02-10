@@ -1,0 +1,208 @@
+@prefix : <http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd> .
+
+<http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#hasAction
+:hasAction rdf:type owl:ObjectProperty ;
+           rdfs:domain :Clause ;
+           rdfs:range :Action .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#hasClause
+:hasClause rdf:type owl:ObjectProperty ;
+           rdfs:domain :Rule ;
+           rdfs:range :Clause .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#hasSensor
+:hasSensor rdf:type owl:ObjectProperty ;
+           rdfs:domain :Clause ;
+           rdfs:range :Sensor .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#hasTriggerCondition
+:hasTriggerCondition rdf:type owl:ObjectProperty ;
+                     rdfs:domain :Clause ;
+                     rdfs:range :TriggerCondition .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#hasLowerBoundary
+:hasLowerBoundary rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :TriggerCondition .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#hasUpperBoundary
+:hasUpperBoundary rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :TriggerCondition .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#Action
+:Action rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#Clause
+:Clause rdf:type owl:Class ;
+        rdfs:comment "A clause is a collection of trigger conditions" .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#ClauseRelationship
+:ClauseRelationship rdf:type owl:Class ;
+                    rdfs:comment "The relationship between two clauses" .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#Conflict
+:Conflict rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#ConflictingAction
+:ConflictingAction rdf:type owl:Class ;
+                   rdfs:subClassOf :ClauseRelationship .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#ExecutionConflict
+:ExecutionConflict rdf:type owl:Class ;
+                   rdfs:subClassOf :Conflict .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#IndependentConflict
+:IndependentConflict rdf:type owl:Class ;
+                     rdfs:subClassOf :Conflict .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#OverlappingSensors
+:OverlappingSensors rdf:type owl:Class ;
+                    rdfs:subClassOf :ClauseRelationship .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#Rule
+:Rule rdf:type owl:Class ;
+      rdfs:comment "A rule has clauses" .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#Sensor
+:Sensor rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#ShadowConflict
+:ShadowConflict rdf:type owl:Class ;
+                rdfs:subClassOf :Conflict .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#SimilarAction
+:SimilarAction rdf:type owl:Class ;
+               rdfs:subClassOf :ClauseRelationship .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#SimilarSensors
+:SimilarSensors rdf:type owl:Class ;
+                rdfs:subClassOf :ClauseRelationship .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#SubsetSensors
+:SubsetSensors rdf:type owl:Class ;
+               rdfs:subClassOf :ClauseRelationship .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#TriggerCondition
+:TriggerCondition rdf:type owl:Class ;
+                  rdfs:comment """A trigger condition consists of a sensor value, a threshold  and an operator.
+Example: temperature >= 100 degrees Fahrenheid""" .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#TriggerFunction
+:TriggerFunction rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#TurnOff
+:TurnOff rdf:type owl:Class ;
+         rdfs:subClassOf :Action .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#TurnOn
+:TurnOn rdf:type owl:Class ;
+        rdfs:subClassOf :Action .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#rule_1
+:rule_1 rdf:type owl:NamedIndividual ,
+                 :Rule ;
+        :hasClause :rule_1_clause_1 .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#rule_1_clause_1
+:rule_1_clause_1 rdf:type owl:NamedIndividual ,
+                          :Clause ;
+                 :hasAction :turn_on_action ;
+                 :hasSensor :sensor_1 ;
+                 :hasTriggerCondition :rule_1_clause_1_trcondition_1 .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#rule_1_clause_1_trcondition_1
+:rule_1_clause_1_trcondition_1 rdf:type owl:NamedIndividual ,
+                                        :TriggerCondition ;
+                               :hasLowerBoundary 30 .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#rule_2
+:rule_2 rdf:type owl:NamedIndividual ,
+                 :Rule ;
+        :hasClause :rule_2_clause_1 .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#rule_2_clause_1
+:rule_2_clause_1 rdf:type owl:NamedIndividual ,
+                          :Clause ;
+                 :hasAction :turn_off_action ;
+                 :hasSensor :sensor_1 ;
+                 :hasTriggerCondition :rule_2_clause_1_trcondition_1 .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#rule_2_clause_1_trcondition_1
+:rule_2_clause_1_trcondition_1 rdf:type owl:NamedIndividual ,
+                                        :TriggerCondition ;
+                               :hasUpperBoundary 35 .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#sensor_1
+:sensor_1 rdf:type owl:NamedIndividual ,
+                   :Sensor .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#sensor_2
+:sensor_2 rdf:type owl:NamedIndividual ,
+                   :Sensor .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#turn_off_action
+:turn_off_action rdf:type owl:NamedIndividual ,
+                          :TurnOff .
+
+
+###  http://www.semanticweb.org/z0045r1r/ontologies/2023/fcd#turn_on_action
+:turn_on_action rdf:type owl:NamedIndividual ,
+                         :TurnOn .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
